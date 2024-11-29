@@ -25,8 +25,6 @@ hive	localhost:10002
 	
 hue	localhost:8888
 	
-zeppelin	localhost:8090
-	
 spark master	localhost:8080
 	
 superset	localhost:8008	username:admin - password:admin
