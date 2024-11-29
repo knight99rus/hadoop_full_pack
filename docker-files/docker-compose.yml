@@ -117,24 +117,6 @@ services:
 #   #     - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
 #   #     - SPARK_WORKER_CORES=4
 #   #     - SPARK_WORKER_MEMORY=8g
-  
-
-
-#Zeppelin
-  zeppelin:
-    image: apache/zeppelin:0.10.1
-    container_name: zeppelin
-    depends_on:
-      - spark-master
-    ports:
-      - "8090:8080"
-    volumes:
-      - ./volume/zeppelin/notebook:/opt/zeppelin/notebook
-      - ./zeppelin/conf:/opt/zeppelin/conf
-      - spark_volume:/opt/zeppelin/spark
-    environment:
-      - "SPARK_HOME=/opt/zeppelin/spark"
-      - "SPARK_MASTER=spark://spark-master:7077"
       
       
 #Hive
@@ -220,7 +202,7 @@ services:
   superset-init:
     image: *superset-image
     container_name: superset_init
-    command: ["/app/docker/docker-init.sh"]
+    command: ["./docker/docker-init.sh"]
     env_file: docker/.env-non-dev
     depends_on:
       - db
@@ -236,7 +218,7 @@ services:
     env_file: docker/.env-non-dev
     image: *superset-image
     container_name: superset_app
-    command: ["/app/docker/docker-bootstrap.sh", "app-gunicorn"]
+    command: ["./docker/docker-bootstrap.sh", "app-gunicorn"]
     user: "root"
     restart: unless-stopped
     ports:
