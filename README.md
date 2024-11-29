@@ -1,14 +1,14 @@
-# Bigdata stack on Docker
+# Full pack for Hadoop developers
 ## Requirements
-docker-compose
+You need to have Docker and Docker-Compose installed.
 
 ## Set up
-### For Windows
+### Installation guide
 
+	
+	git clone https://github.com/knight99rus/hadoop_full_pack --config core.autocrlf=input
 
-	git clone https://github.com/HoangNV2001/Docker-Hadoop-Hive-Spark-JupyterLab-Hue-Superset --config core.autocrlf=input
-
- 	cd ./Docker-Hadoop-Hive-Spark-JupyterLab-Hue-Superset/docker-files
+ 	cd ./hadoop_full_pack/docker-files
 
 	docker-compose up --no-start
 
@@ -28,7 +28,6 @@ namenode|localhost:9870||
 datanode|localhost:9864||
 hive|localhost:10002||
 hue|localhost:8888||
-zeppelin|localhost:8090||
 spark master|localhost:8080||
 superset|localhost:8008|username:admin - password:admin|
 
